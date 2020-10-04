@@ -81,9 +81,6 @@ app.use((req, res, next) => {
 let loginRouter = require('./routes/loginRouter');
 app.use('/', loginRouter);
 
-let studentSystemRouter = require('./routes/studentSystemRouter');
-app.use('/studentsystem', studentSystemRouter);
-
 let addStudentRouter = require('./routes/addStudentRouter');
 app.use('/addStudent', addStudentRouter);
 
