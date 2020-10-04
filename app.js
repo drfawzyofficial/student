@@ -14,12 +14,20 @@ app.use(cookieParser())
 /*@ here we include third-party middleware => Cookie-Parser @*/
 
 /*@ here we connect to DB @*/
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/studentDB', { useNewUrlParser: true }, (err) => {
-    if (err) console.log(err);
-    else console.log('Connected to DB');
-});
-
+const mongoose = require("mongoose");
+(async () => {
+  try {
+    await mongoose.connect("mongodb+srv://fawzy:0120975049@onlinecoursebooking-vbcbx.gcp.mongodb.net/globalDB"),
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+      }
+    console.log("Connected to mongoDB");
+  } catch (err) {
+    console.error(err.message);
+  }
+})()
 /*@ here we connect to DB @*/
 
 /*@ here we include static-files @*/
