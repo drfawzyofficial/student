@@ -4,13 +4,14 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const Student = require('../models/Student');
-router.get('/', (req, res, next) => {
+const { ensureAuthenticated } = require('../config/auth');
+router.get('/', ensureAuthenticated, (req, res, next) => {
     Student.find({  }, (err, studentDocs) => {
         if(err) return console.log(err);
         else res.render('showEdit', { studentDocs : studentDocs });
     })
 });
-router.post('/', (req, res, next) => {
+router.post('/', ensureAuthenticated, (req, res, next) => {
     Student.findOne({ _id: req.body.studentID }, (err, result) => {
         if(err) return console.log(err);
         else {

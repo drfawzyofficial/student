@@ -5,13 +5,14 @@ const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const Student = require('../models/Student');
 const moment = require('moment');
-router.get('/', (req, res, next) => {
+const { ensureAuthenticated } = require('../config/auth');
+router.get('/', ensureAuthenticated, (req, res, next) => {
     Student.find({  }, (err, studentDocs) => {
         if(err) return console.log(err);
         else res.render('showStudent', { studentDocs : studentDocs });
     })
 });
-router.patch('/', (req, res, next) => {
+router.patch('/', ensureAuthenticated, (req, res, next) => {
     let today = moment().format('dddd'), futureDate;
     Student.findOne({ _id: req.body.studentID }, (err, result) => {
         if(err) return console.log(err);

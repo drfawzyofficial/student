@@ -4,10 +4,11 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 const passport = require('passport');
 const Student = require('../models/Student');
-router.get('/', (req, res, next) => {
+const { ensureAuthenticated } = require('../config/auth');
+router.get('/', ensureAuthenticated, (req, res, next) => {
     res.render('deleteStudent');
 });
-router.post('/', (req, res, next) => {
+router.post('/', ensureAuthenticated, (req, res, next) => {
     if ((req.body.studentCode).trim() === '') return res.json({ txt: 'Student Code must not be empty' });
     else if (isNaN(req.body.studentCode)) return res.json({ txt: 'Stdent Code must be number' })
     else {

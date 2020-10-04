@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Student = require('../models/Student');
 const { check, validationResult } = require('express-validator');
-router.get('/', (req, res, next) => {
+const { ensureAuthenticated } = require('../config/auth');
+router.get('/', ensureAuthenticated, (req, res, next) => {
     res.render('addStudent', { errors: req.flash('errors') });
 });
-router.post('/', [
+router.post('/', ensureAuthenticated, [
     check('fullname').isLength({ min: 6 }).withMessage('Fullname shuold be more than 6 chars'),
     check('studentPhone').isLength({ min: 11 }).withMessage('Student Phone shoud be equal to 11 chars'),
     check('fatherPhone').isLength({ min: 11 }).withMessage('Father Phone shoud be equal to 11 chars'),

@@ -18,7 +18,7 @@ router.post('/' , [
         res.redirect('/');
     } else {
         passport.authenticate('local.login', {
-            successRedirect: '/studentsystem',
+            successRedirect: '/addStudent',
             failureRedirect: '/',
             failureFlash: true
         })(req, res, next);
