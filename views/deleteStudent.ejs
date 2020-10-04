@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete Student</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #d7e6ff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark primary-color position-fixed w-100" style="z-index: 999">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="/studentsystem">Student System</a>
+    
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+    
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="showStudent">Show Students
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/addStudent">Add Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editStudent">Edit Student</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/deleteStudent">Delete Student</a>
+                    </li>
+    
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Action</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/showAttendance">Attendance Info</a>
+                            <a class="dropdown-item" href="/showMark">Marks Info</a>
+                            <a class="dropdown-item" href="/showPayment">Payment Info</a>
+                        </div>
+                    </li>
+    
+                </ul>
+                <!-- Links -->
+    
+    
+            </div>
+            <!-- Collapsible content -->
+    
+        </nav>
+        <!--/.Navbar-->
+
+    <div class="container-fluid" style="position: relative; top: 56px">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="f-content">
+                        <h3>All students from Database</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae cum architecto quidem
+                            doloribus deleniti quisquam, praesentium similique voluptatem vitae! Molestias ex ducimus
+                            excepturi tempore atque eaque neque aperiam. Similique, esse?</p>
+                        <div class="table-responsive bg bg-white shadow p-3 rounded">
+                            <%- include('./partials/flashMessages') -%>
+                            <h3>Database has shown now</h3>
+                            <p>You can search by writing Student Code</p>
+                            <form class="form-inline md-form mr-auto mb-4 w-100" method="POST" action="/deleteStudent"
+                                id="deleteStudentForm">
+                                <input id="studentCode" class="form-control mr-sm-2" style="width: 50%" type="text"
+                                    placeholder="Write Student Code to get its data" aria-label="Search">
+                                <button type="submit" class="btn btn-primary btn-rounded btn-sm my-0">Get its
+                                    Data</button>
+                            </form>
+                            <!-- Card -->
+                            <div class="card" style="width: 100%; display: none; background-color: #d7e6ff">
+
+                                <!-- Card content -->
+                                <div class="card-body">
+
+                                    <!-- Title -->
+                                    <div class="f-row d-flex">
+                                        <h5>Student Code: </h5>
+                                        <span id="fStudentCode"></span>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>Fullname: </h5>
+                                        <span id="fStudentName"></span>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>Comment: </h5>
+                                        <p id="fComment"></p>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>studentPhone: </h5>
+                                        <span id="fStudentPhone"></span>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>fatherPhone: </h5>
+                                        <span id="fFatherPhone"></span>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>motherPhone: </h5>
+                                        <span id="fMotherPhone"></span>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>Group: </h5>
+                                        <p id="fGroup">.</p>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>Time: </h5>
+                                        <p id="fTime"></p>
+                                    </div>
+                                    <div class="f-row d-flex">
+                                        <h5>Payment: </h5>
+                                        <p id="fPayment"></p>
+                                    </div>
+                                    <form class="deleteStudentAction" id="deleteStudentAction">
+                                        <button type="submit" class="btn btn-danger btns-m">Delete</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                            <!-- Card -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="flashMessageToAll"
+        style="padding: 8px 12px; border-radius: 6px; background-color: rgba(0, 0, 0, 0.8); display: none; bottom: 25px; left: 20px; position: fixed; color: #FFF;">
+        <p style="padding: 0; margin: 0"></p>
+    </div>
+    <div id="loading" class="bgContainer" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 5555; background-color: #FFF; display: flex; justify-content: center; align-items: center;">
+            <div class="imageNow_for_Gif text-center">
+                <h4>Be quite Mr/Eslam, Please</h4>
+                <img src="/assets/Images/Preloader_3.gif"/>
+                <h5>Loading...</h5>
+            </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="popover"]').popover();
+        })
+    </script>
+
+    <script>
+        // Ajax Code
+        $("#deleteStudentForm").on("submit", function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/deleteStudent',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    studentCode: $("#studentCode").val(),
+                }),
+                dataType: 'json',
+                success: (response) => {
+                    if (response.txt) {
+                        $("#flashMessageToAll").text(response.txt).fadeIn(250).delay(1000).fadeOut(250)
+                    } else {
+                        $("#studentCode").prop("disabled", "true");
+                        $(".card").css("display", "block");
+                        $("#fStudentCode").text(response.studentCode);
+                        $("#fStudentName").text(response.fullname);
+                        $("#fComment").text(response.comment);
+                        $("#fStudentPhone").text(response.studentPhone);
+                        $("#fFatherPhone").text(response.fatherPhone);
+                        $("#fMotherPhone").text(response.motherPhone);
+                        $("#fGroup").text(response.group);
+                        $("#fTime").text(response.time);
+                        $("#fPayment").text(response.payment.firstMonth);
+                    }
+
+                },
+                error: (err) => console.log(err)
+            });
+        });
+
+        $("#deleteStudentAction").on("submit", function (event) {
+            event.preventDefault();
+            let deleteConfirm = confirm('Are you sure to delete this student?');
+            if(deleteConfirm) {
+            $.ajax({
+                url: '/deleteStudent',
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    studentCode: $("#studentCode").val(),
+                }),
+                success: (response) => {
+                    window.location.reload();
+                }
+            })
+        } else {
+            $("#flashMessageToAll").text('Student has not been deleted').fadeIn(250).delay(2000).fadeOut(250);
+        }
+        });
+    </script>
+    <script>
+        window.onload = function() {
+            $("#loading").css("display", "none");
+        }
+    </script>
+
+</body>
+
+</html>

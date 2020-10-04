@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Student</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/css/mdb.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #d7e6ff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark primary-color position-fixed w-100" style="z-index: 999">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="/studentsystem">Student System</a>
+    
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+    
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="showStudent">Show Students
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/addStudent">Add Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/editStudent">Edit Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/deleteStudent">Delete Student</a>
+                    </li>
+    
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Action</a>
+                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/showAttendance">Attendance Info</a>
+                            <a class="dropdown-item" href="/showMark">Marks Info</a>
+                            <a class="dropdown-item" href="/showPayment">Payment Info</a>
+                        </div>
+                    </li>
+    
+                </ul>
+                <!-- Links -->
+    
+    
+            </div>
+            <!-- Collapsible content -->
+    
+        </nav>
+        <!--/.Navbar-->
+
+    <div class="container-fluid" style="position: relative; top: 56px"></div>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 bg-white shadow rounded" style="padding: 15px">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>Add Student now</h3>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos pariatur saepe
+                                architecto labore rerum dolorem eaque iure velit, facere neque provident, fuga non!
+                                Omnis impedit perspiciatis libero provident nobis. Enim! Lorem ipsum dolor sit amet
+                                consectetur adipisicing elit. Labore inventore alias sint corrupti cupiditate
+                                consequuntur mollitia ipsum voluptates ipsa possimus sequi quod debitis sit vel
+                                doloribus molestias animi, dolor vitae!</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="f-content border" style="background-color: #F7F7F7F7; padding: 15px;">
+                                <div class="row">
+                                    <div class="col-md-6 pr-0">
+                                        <div class="p-2" style="border-right: 1px solid #DDD">
+                                            <div class="text-muted">
+                                                <div>
+                                                    <h5 class="card-title h1-responsive font-bold"><strong>Create your
+                                                            beautiful
+                                                            website with MDBootstrap</strong></h5>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        Repellat
+                                                        fugiat, laboriosam, voluptatem,
+                                                        optio vero odio nam sit officia accusamus minus error nisi
+                                                        architecto
+                                                        nulla ipsum dignissimos. Odit sed qui, dolorum!
+                                                    </p>
+                                                    <a class="btn btn-success"><i class="fas fa-clone left"></i> View
+                                                        project</a>
+                                                        <%- include('./partials/flashMessages.ejs') -%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 pl-0">
+                                        <div class="p-2" style="border-left: 1px solid #DDD">
+                                            <div class="text-muted">
+                                                <div>
+                                                    <h5 class="card-title h1-responsive font-bold"><strong>Filling the
+                                                            next form</strong></h5>
+                                                    <p>Add student now by filling the next form</p>
+                                                    <form class="addStudent" method="POST" action="/addStudent">
+                                                        <div class="md-form md-outline shadow-sm">
+                                                            <input name="fullname" type="text" id="myFullname"
+                                                                class="form-control bg-white">
+                                                            <label for="myFullname">Type Student name</label>
+                                                        </div>
+                                                        <div class="md-form md-outline shadow-sm">
+                                                            <input name="studentPhone" type="text" id="myStudentPhone"
+                                                                class="form-control bg-white">
+                                                            <label for="myStudentPhone">Type Student Phone</label>
+                                                        </div>
+                                                        <div class="md-form md-outline shadow-sm">
+                                                            <input name="fatherPhone" type="text" id="myFullname"
+                                                                class="form-control bg-white">
+                                                            <label for="myFullname">Type Father Phone</label>
+                                                        </div>
+                                                        <div class="md-form md-outline shadow-sm">
+                                                            <input name="motherPhone" type="text" id="myFullname"
+                                                                class="form-control bg-white">
+                                                            <label for="myFullname">Type Mother Phone</label>
+                                                        </div>
+                                                        <!--Material textarea-->
+                                                        <!--Textarea with icon prefix-->
+                                                        <div class="md-form md-outline shadow-sm">
+                                                            <textarea name="comment" id="form10"
+                                                                class="md-textarea form-control bg-white border rounded"
+                                                                style="resize: none"></textarea>
+                                                            <label for="form10" >Write a comment</label>
+                                                        </div>
+                                                        <div class="md-form d-flex justify-content-between">
+                                                            <select name="group" class="browser-default custom-select shadow-sm">
+                                                                <option selected>Choose Group</option>
+                                                                <option value="Saturday-Tuesday">Saturday-Tuesday</option>
+                                                                <option value="Sunday-Wednesday">Sunday-Wednesday</option>
+                                                                <option value="Monday-Thursday">Monday-Thursday</option>
+                                                            </select>
+                                                            <div class="spe px-2"></div>
+                                                            <select name="time" class="browser-default custom-select shadow-sm">
+                                                                <option selected>Choose Time</option>
+                                                                <option value="2 - 4">2 - 4</option>
+                                                                <option value="4 - 6">4 - 6</option>
+                                                                <option value="6 - 8">6 - 8</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-around"
+                                                            style="margin-top: 1.5rem; margin-bottom: 1.5rem">
+                                                            <div style="width: 32%">Payment Status</div>
+                                                            <div class="custom-control custom-radio" style="width: 32%">
+                                                                <input type="radio" class="custom-control-input"
+                                                                    id="paymentChecked" name="defaultExampleRadios"
+                                                                    checked value="1">
+                                                                <label class="custom-control-label"
+                                                                    for="paymentChecked">Payment is ok</label>
+                                                            </div>
+
+                                                            <div class="custom-control custom-radio" style="width: 32%">
+                                                                <input type="radio" class="custom-control-input"
+                                                                    id="notPaymentChecked" name="defaultExampleRadios"
+                                                                     value="0">
+                                                                <label class="custom-control-label"
+                                                                    for="notPaymentChecked">Payment is not ok</label>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-primary">Add Student <i
+                                                                    class="fas fa-bolt"></i></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="bgContainer" style="position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 5555; background-color: #FFF; display: flex; justify-content: center; align-items: center;">
+            <div class="imageNow_for_Gif text-center">
+                <h4>Be quite Mr/Eslam, Please</h4>
+                <img src="/assets/Images/Preloader_3.gif"/>
+                <h5>Loading...</h5>
+            </div>
+     </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+            $('.datepicker').pickadate();
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.mdb-select').materialSelect();
+        });
+    </script>
+     <script>
+        window.onload = function() {
+            $("#loading").css("display", "none");
+        }
+    </script>
+
+</body>
+
+</html>
